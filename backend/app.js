@@ -17,6 +17,16 @@ const cookieParser = require("cookie-parser");
 mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,
 });
 
+mongoose.connection.on('connected', () => {
+  console.log('connected');
+  console.log(mongoose.connection.readyState); //logs 1
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('disconnected');
+  console.log(mongoose.connection.readyState); //logs 0
+});
+
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: "5mb"}));
 app.use(bodyParser.urlencoded({
