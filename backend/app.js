@@ -16,10 +16,20 @@ const cookieParser = require("cookie-parser");
 
 mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,
 });
+
+app.use(morgan('dev'));
+app.use(bodyParser.json({limit: "5mb"}));
+app.use(bodyParser.urlencoded({
+    limit: "5mb",
+    extended: true
+}));
+app.use(cookieParser());
+app.use(cors());
+app.use(errorHandler);
+
 //port
 const port = process.env.PORT || 9000;
 
 app.listen(port,function(){
     console.log("Server started on port 9000");
 });
-
