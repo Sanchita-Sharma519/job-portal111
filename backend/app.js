@@ -12,6 +12,14 @@ var cors = require('cors');
 
 mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,
 });
+mongoose.connection.on('connected', () => {
+    console.log('connected');
+    console.log(mongoose.connection.readyState); //logs 1
+  });
+  mongoose.connection.on('disconnected', () => {
+    console.log('disconnected');
+    console.log(mongoose.connection.readyState); //logs 0
+  });
 //port
 const port = process.env.PORT || 9000;
 
