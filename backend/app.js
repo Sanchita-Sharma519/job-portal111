@@ -35,6 +35,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors());
+
+app.get("/",function(req,res){
+  res.send("Hello from node js");
+});
+
 app.use(errorHandler);
 
 //port
