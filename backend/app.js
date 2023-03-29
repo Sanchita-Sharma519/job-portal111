@@ -13,6 +13,8 @@ var cors = require('cors');
 
 const cookieParser = require("cookie-parser");
 
+//import routes
+const authRoutes = require('./routes/authroutes');
 
 mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,
 });
@@ -36,9 +38,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(cors());
 
-app.get("/",function(req,res){
+/*app.use("/",function(req,res){
   res.send("Hello from node js");
-});
+});*/
+app.use('/',authRoutes);
 
 app.use(errorHandler);
 
