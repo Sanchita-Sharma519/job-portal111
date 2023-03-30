@@ -16,7 +16,7 @@ const cookieParser = require("cookie-parser");
 //import routes
 const authRoutes = require('./routes/authroutes');
 
-mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,
+mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true
 });
 
 mongoose.connection.on('connecting', () => { 
@@ -54,8 +54,8 @@ app.use('/',authRoutes);
 app.use(errorHandler);
 
 //port
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 
 app.listen(port,function(){
-    console.log("Server started on port 9000");
+    console.log("Server started on port 3000");
 });
