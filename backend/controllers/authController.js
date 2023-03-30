@@ -18,3 +18,28 @@ exports.signup = async function(req,res,next){
         next(error);
     }
 }
+
+exports.signin = async function(req,res,next){
+    
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
+        
+        if(!email){
+            return next(new ErrorResponse("please add an email",403));
+        }
+        if(!password){
+            return next(new ErrorResponse("please add a password",403));
+        }
+        const user= await User.create(req.body);
+        if(!user){
+            return next(new ErrorResponse("Invalid credentials",400));
+        }
+        const isMatched = await user.comparePassword(password);
+        if(!isMatched){
+            return next(new ErrorResponse("Invalid credentials",400)); 
+        }
+    }catch(error){
+        next(error);
+    }
+}
