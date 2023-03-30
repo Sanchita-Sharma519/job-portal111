@@ -31,7 +31,7 @@ exports.signin = async function(req,res,next){
         if(!password){
             return next(new ErrorResponse("please add a password",403));
         }
-        const user= await User.create(req.body);
+        const user= await User.findOne({email});
         if(!user){
             return next(new ErrorResponse("Invalid credentials",400));
         }
@@ -39,7 +39,26 @@ exports.signin = async function(req,res,next){
         if(!isMatched){
             return next(new ErrorResponse("Invalid credentials",400)); 
         }
+
+        sendTokenResponse(user,200,res);
+
     }catch(error){
         next(error);
     }
+}
+
+const sendTokenResponse = async(user,codeStatus,res)=>{
+    const token=user.getJwtToken();
+    res 
+    .status(codeStatus)
+    .cookie('token',token, { maxAge: 60*60*1000, httpOnly: true})
+    .json({success: true , token , user})
+} 
+
+exports.logout = (req,res,next) => {
+    res.clearCookie('token');
+    res.status(200).json({
+        success: true,
+        message: "logged out"
+    })
 }
