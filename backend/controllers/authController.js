@@ -56,9 +56,9 @@ const sendTokenResponse = async(user,codeStatus,res)=>{
 } 
 
 exports.logout = (req,res,next) => {
-    res.clearCookie('token');
+    res.clearCookie('token');     
     res.status(200).json({
-        success: true,
+        success: true,           
         message: "logged out"
     })
 }
