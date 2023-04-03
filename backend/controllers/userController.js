@@ -28,3 +28,44 @@ exports.allUsers = async (req,res,next) =>{
         return next(error);
     }
 }
+exports.singleUser = async(req,res,next) => {
+    try{
+        const user = await User.findById(req.params.id);
+        res.status(201).json({
+            success: true,
+            user
+        })
+        next();
+    }
+    catch(error){
+        return next(error);
+    }
+}
+
+exports.editUser = async(req,res,next) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        res.status(201).json({
+            success: true,
+            user
+        })
+        next();
+    }
+    catch(error){
+        return next(error);
+    }
+}
+
+exports.deleteUser = async(req,res,next) => {
+    try{
+        const user = await User.findByIdAndDelete(req.params.id);
+        res.status(201).json({
+            success: true,
+            message : "user deleted"
+        })
+        next();
+    }
+    catch(error){
+        return next(error);
+    }
+}
