@@ -15,6 +15,8 @@ const cookieParser = require("cookie-parser");
 
 //import routes
 const authRoutes = require('./routes/authroutes');
+const userRoutes = require('./routes/userRoutes');
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true
 });
@@ -49,7 +51,8 @@ app.use(cors());
 /*app.use("/",function(req,res){
   res.send("Hello from node js");
 });*/
-app.use('/',authRoutes);
+app.use('/api',authRoutes);
+app.use('/api',userRoutes);
 
 app.use(errorHandler);
 

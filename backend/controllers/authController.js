@@ -1,5 +1,5 @@
 
-const User=require("../model/userModel");
+const User = require("../model/userModel");
 const ErrorResponse = require("../utils/errorResponse");
 
 exports.signup = async function(req,res,next){
@@ -64,10 +64,10 @@ exports.logout = (req,res,next) => {
 }
 
 exports.userProfile = async (req,res,next) => {
-    const user = await User.findById(req.user.id).select(password);
+    const user = await User.findById(req.user.id).select('-password');
 
     res.status(200).json({
         success: true,
         user
-    })
+    });
 }
