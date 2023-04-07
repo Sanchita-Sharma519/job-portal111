@@ -68,7 +68,7 @@ exports.showJobs = async(req,res,next) =>{
         );
 
         let cat=req.query.cat;
-        let categ=cat !== '' ? cat : ids;
+        let categ = cat !== '' ? cat : ids;
 
     //jobs by location
     let locations=[];
@@ -83,15 +83,15 @@ exports.showJobs = async(req,res,next) =>{
     const pageSize = 5;
     const page = Number(req.query.pageNumber)||1;
    // const count = await Job.find({}).estimatedDocumentCount();
-    const count = await Job.find({...keyword, jobType: categ}).countDocuments();
+    const count = await Job.find({...keyword}).countDocuments();
 
 
     try{
-        const jobs = await Job.find({...keyword,jobType: categ,location: locationFilter}).skip(pageSize * (page-1)).limit(pageSize);
+        const jobs = await Job.find({...keyword}).skip(pageSize * (page-1)).limit(pageSize);
         res.status(200).json({ 
             success: true,
             jobs,
-            pageSize,
+            pageSize, 
             page,
             pages: Math.ceil( count/pageSize ),
             count,
