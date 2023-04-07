@@ -1,5 +1,5 @@
 const express = require('express');
-const {createJobType, allJobType} = require('../controllers/jobsTypeController');
+const {createJobType, allJobType,updateJobType} = require('../controllers/jobsTypeController');
 const { isAuthenticated, isAdmin } = require('../middleware/auth');
 const router = express.Router();
 
