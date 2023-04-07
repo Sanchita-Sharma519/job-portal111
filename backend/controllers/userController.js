@@ -69,3 +69,31 @@ exports.deleteUser = async(req,res,next) => {
         return next(error);
     }
 }
+
+exports.createUserJobHistory = async(req,res,next) => {
+    const {title,description,salary,location} = req.body;
+    try{
+        const currentUser = await User.findOne({_id: req.user._id});
+        if(!currentUser){
+            return next(new ErrorResponse("You must log in",401));
+        }else{
+            const addJobHistory = {
+                title,
+                description,
+                salary,
+                location,
+                user: req.user._id
+            }
+            currentUser.jobsHistory.push(addJobHistory);
+            await currentUser.save();
+        }
+        res.status(201).json({
+            success: true,
+            currentUser
+        })
+        next();
+    }
+    catch(error){
+        return next(error);
+    }
+}

@@ -87,7 +87,7 @@ exports.showJobs = async(req,res,next) =>{
 
 
     try{
-        const jobs = await Job.find({...keyword}).skip(pageSize * (page-1)).limit(pageSize);
+        const jobs = await Job.find({...keyword}).sort({createdAt: -1}).skip(pageSize * (page-1)).limit(pageSize);
         res.status(200).json({ 
             success: true,
             jobs,
