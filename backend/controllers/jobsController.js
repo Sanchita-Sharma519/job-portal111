@@ -59,6 +59,7 @@ exports.showJobs = async(req,res,next) =>{
         }
     } : {}
 
+    //filter jobs by category ids
     let ids=[];
     const jobTypeCategory = await JobType.find({},{_id:1});
     jobTypeCategory.forEach(cat=>{
@@ -69,6 +70,16 @@ exports.showJobs = async(req,res,next) =>{
         let cat=req.query.cat;
         let categ=cat !== '' ? cat : ids;
 
+    //jobs by location
+    let locations=[];
+    const jobByLocation = await Job.find({},{location:1});
+    jobByLocation.forEach(val=>{
+        locations.push(val.location);
+    });
+    let setUniqueLocation = [...new Set(locations)];
+    let location = req.query.location;
+    let locationFilter = location !== '' ? location : setUniqueLocation;
+
     const pageSize = 5;
     const page = Number(req.query.pageNumber)||1;
    // const count = await Job.find({}).estimatedDocumentCount();
@@ -76,14 +87,15 @@ exports.showJobs = async(req,res,next) =>{
 
 
     try{
-        const jobs = await Job.find({...keyword}).skip(pageSize * (page-1)).limit(pageSize); 
+        const jobs = await Job.find({...keyword,jobType: categ}).skip(pageSize * (page-1)).limit(pageSize);
         res.status(200).json({ 
             success: true,
             jobs,
+            pageSize,
             page,
             pages: Math.ceil( count/pageSize ),
             count,
-            
+            setUniqueLocation
         });
     }catch(error){
         next(error);
