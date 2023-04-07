@@ -87,11 +87,7 @@ exports.showJobs = async(req,res,next) =>{
 
 
     try{
-<<<<<<< HEAD
-        const jobs = await Job.find({...keyword}).sort({createdAt: -1}).skip(pageSize * (page-1)).limit(pageSize);
-=======
         const jobs = await Job.find({...keyword , jobType: categ , location: locationFilter}).skip(pageSize * (page-1)).limit(pageSize);
->>>>>>> 2eceea25a9e6ce5f662cea2c1be051dd12e00909
         res.status(200).json({ 
             success: true,
             jobs,
