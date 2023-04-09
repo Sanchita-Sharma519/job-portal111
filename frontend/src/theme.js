@@ -1,8 +1,8 @@
-import { createTheme } from '@mui/material/styles'
-import { blue,lightBlue } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles';
+import { blue, lightBlue } from '@mui/material/colors';
 
 export const theme = createTheme({
-    pallete: {
+    palette: {
         primary: {
             main: blue[500]
         },
