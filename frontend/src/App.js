@@ -11,16 +11,24 @@ import LogIn from './pages/logIn';
 import UserDashboard from './pages/user/UserDashboard';
 import Layout from './pages/global/Layout';
 import UserRoute from './component/UserRoute';
+import { ProSidebarProvider } from 'react-pro-sidebar';
+import UserJobsHistory from './pages/user/UserJobsHistory';
+
+
 
 const UserDashboardHOC = Layout(UserDashboard);
+const UserJobsHistoryHOC = Layout(UserJobsHistory);
+
 
 const App = () =>{
 
   return (
     <>
+    
     <ToastContainer/>
     <ThemeProvider theme={theme}>
-        <CssBaseline>
+        <CssBaseline/>
+        <ProSidebarProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home/>} />
@@ -28,11 +36,14 @@ const App = () =>{
               <Route path='/search/:keyword' element={<Home />} />
               <Route path='/login' element={<LogIn />} />
               <Route path='/user/dashboard' element={<UserRoute>< UserDashboardHOC /></UserRoute>} />
+              <Route path='/user/jobs' element={<UserRoute>< UserJobsHistoryHOC /></UserRoute>} />
+
               <Route path="*" element={<NotFound/>} />
             </Routes>
           </BrowserRouter> 
-        </CssBaseline>
+          </ProSidebarProvider>
     </ThemeProvider>
+   
     </>
   )
 

@@ -1,9 +1,11 @@
 import React from 'react'
 
 const UserDashboard = () => {
-  return (
-    <div>UserDashboard</div>
-  )
+    return (
+        <>
+            <h1>user Dashboard</h1>
+        </>
+    )
 }
 
 export default UserDashboard
