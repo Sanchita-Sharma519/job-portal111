@@ -22,7 +22,7 @@ const jobRoute = require('./routes/jobsRoutes');
 
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/jobDB",{useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true
+mongoose.connect(process.env.DB_LINK,{useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true
 });
 
 mongoose.connection.on('connecting', () => { 
