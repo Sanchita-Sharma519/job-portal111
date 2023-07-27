@@ -8,6 +8,9 @@ Contributors:
 
    ![image](https://github.com/Sanchita-Sharma519/job-portal111/assets/106946749/6f342709-80db-4d6f-90e5-d19d7fc4ebbf)
 
+   ![image](https://github.com/Sanchita-Sharma519/job-portal111/assets/106946749/33b28dc9-de42-469e-a9a3-4d4695f620c0)
+
+
 
 
    Features:
