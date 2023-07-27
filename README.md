@@ -4,6 +4,12 @@ Contributors:
 1. Gajendra Agarwal
 2. Sanchita Sharma
 
+   ![image](https://github.com/Sanchita-Sharma519/job-portal111/assets/106946749/1c784581-2894-4499-ae68-9a77fe02c162)
+
+   ![image](https://github.com/Sanchita-Sharma519/job-portal111/assets/106946749/6f342709-80db-4d6f-90e5-d19d7fc4ebbf)
+
+
+
    Features:
 - Software Architecture: MVC pattern;
 - HOC (High Order Component);
