@@ -1,8 +1,5 @@
 Link to my Job Portal Website : [https://job-portal-1-blmz.onrender.com/](https://job-portal-mern-stack.onrender.com/)
 
-Contributors:
-1. Gajendra Agarwal
-2. Sanchita Sharma
 
    ![image](https://github.com/Sanchita-Sharma519/job-portal111/assets/106946749/1c784581-2894-4499-ae68-9a77fe02c162)
 
